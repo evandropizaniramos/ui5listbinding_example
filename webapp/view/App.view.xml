@@ -1,0 +1,52 @@
+<mvc:View controllerName="lst.listbinding.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<!--<List id="listMaterial" items="{path: '/material', templateShareable: false}">-->
+						<!--	<items>-->
+						<!--		<StandardListItem title="{id}" description="{description}"/>-->
+						<!--	</items>-->
+						<!--</List>-->
+						<Table id="tableMaterial" width="100%" items="{/material}">
+							<columns>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>materialId}"/>
+								</Column>
+								<Column>
+									<Text text="Descrição do material"/>
+								</Column>
+								<Column>
+									<Text text="Tipo"/>
+								</Column>
+								<Column>
+									<Text text="Operações"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{id}"/>
+										<Input value="{description}"/>
+										<Text text="{path: 'type', formatter: '.formatType'}"/>
+										<Button text="Exibir" press="onPress"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<VBox id="boxForm">
+							<Label text="ID do material"/>
+							<Input id="inputMaterialId"
+								value="{path: 'id', type: 'sap.ui.model.type.Integer', formatOptions: {minIntegerDigits: 8}, constraints: {maximum: 99999999}}"/>
+							<Label text="Descrição do material"/>
+							<Input id="inputMaterialDesc" value="{description}"/>
+							<Label text="Tipo"/>
+							<Input id="inputMaterialType" value="{= ${type} === '1' ? 'Laptops' : 'Acessórios'}"/>
+						</VBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
